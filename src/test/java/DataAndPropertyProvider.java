@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class DataAndPropertyProvider {
 
-    public static Object[][] readFile(File file) throws IOException {
+    private static Object[][] readFile(File file) {
         String text = null;
         Logger log = LogManager.getRootLogger();
 
@@ -22,41 +22,36 @@ public class DataAndPropertyProvider {
         int rowNum = row.length;
         int colNum = row[0].split(",").length;
 
-        Object[][] data = new Integer[rowNum][colNum];
+        Object[][] data = new String[rowNum][colNum];
 
         for (int i = 0; i < rowNum; i++) {
             String[] cols = row[i].split(",");
 
             for (int j = 0; j < colNum; j++) {
-                String string = cols[j].trim();
-                data[i][j] = Integer.valueOf(string);
-                System.out.println("value is " + data[i][j]);
+                String string = cols[j];
+                data[i][j] = String.valueOf(string);
+               // System.out.println("value is " + data[i][j]);
             }
         }
         return data;
     }
 
-    private static Object[][] getDataSets(String filePath){
-        Object[][] returnObjArray = null;
+    private static Object[][] getDataSets(String filePath) {
+        //Object[][] returnObjArray=null;
         File file = new File(filePath);
-        try {
-            returnObjArray = readFile(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Object[][] returnObjArray = readFile(file);
         return returnObjArray;
     }
 
     @DataProvider(name = "IncorrectDataSets")
     public static Object[][] incorrectDataSets() {
-        Object[][] returnObjArray = new Object[0][];
-        getDataSets("src/test/resources/IncorrectDataSets.txt");
+        Object[][] returnObjArray = getDataSets("src/test/resources/IncorrectDataSets.txt");
         return returnObjArray;
     }
 
     @DataProvider(name = "IncorrectTestUsers")
     public static Object[][] incorrectTestUsers() {
-        Object[][] returnObjArray = new Object[0][];
+        Object[][] returnObjArray = new Object[4][];
         getDataSets("src/test/resources/IncorrectTestUsers.txt");
         return returnObjArray;
     }
