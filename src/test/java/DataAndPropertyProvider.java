@@ -30,17 +30,14 @@ public class DataAndPropertyProvider {
             for (int j = 0; j < colNum; j++) {
                 String string = cols[j];
                 data[i][j] = String.valueOf(string);
-               // System.out.println("value is " + data[i][j]);
             }
         }
         return data;
     }
 
     private static Object[][] getDataSets(String filePath) {
-        //Object[][] returnObjArray=null;
-        File file = new File(filePath);
-        Object[][] returnObjArray = readFile(file);
-        return returnObjArray;
+        File fileWithCreds = new File(filePath);
+        return readFile(fileWithCreds);
     }
 
     @DataProvider(name = "IncorrectDataSets")
