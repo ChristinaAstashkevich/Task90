@@ -48,15 +48,13 @@ public class DataAndPropertyProvider {
 
     @DataProvider(name = "IncorrectTestUsers")
     public static Object[][] incorrectTestUsers() {
-        Object[][] returnObjArray = new Object[4][];
-        getDataSets("src/test/resources/IncorrectTestUsers.txt");
+        Object[][] returnObjArray = getDataSets("src/test/resources/IncorrectTestUsers.txt");
         return returnObjArray;
     }
 
     @DataProvider(name = "CorrectTestUser")
     public static Object[][] correctTestUser() {
-        Object[][] returnObjArray = new Object[0][];
-        getDataSets("src/test/resources/CorrectTestUser.txt");
+        Object[][] returnObjArray = getDataSets("src/test/resources/CorrectTestUser.txt");
         return returnObjArray;
     }
 
